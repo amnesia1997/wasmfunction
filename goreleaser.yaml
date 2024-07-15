@@ -1,8 +1,8 @@
 project_name: fission
 release:
   github:
-    owner: 1999huye1104
-    name: wasm-faas
+    owner: amnesia1997
+    name: wasmfunction
   prerelease: true
   draft: false
 
@@ -16,9 +16,9 @@ builds:
     id: fission-bundle
     ldflags:
       - -s -w
-      - -X github.com/1999huye1104/wasm-faas/pkg/info.GitCommit={{.ShortCommit}}
-      - -X github.com/1999huye1104/wasm-faas/pkg/info.BuildDate={{.Date}}
-      - -X github.com/1999huye1104/wasm-faas/pkg/info.Version={{.Tag}}
+      - -X github.com/amnesia1997/wasmfunction/pkg/info.GitCommit={{.ShortCommit}}
+      - -X github.com/amnesia1997/wasmfunction/pkg/info.BuildDate={{.Date}}
+      - -X github.com/amnesia1997/wasmfunction/pkg/info.Version={{.Tag}}
     gcflags:
       - all=-trimpath={{ if index .Env "GITHUB_WORKSPACE"}}{{ .Env.GITHUB_WORKSPACE }}{{ else }}{{ .Env.PWD }}{{ end }}
     asmflags:
@@ -79,8 +79,8 @@ dockers:
     ids:
       - fission-bundle
     image_templates:
-      - "huyezs/fission-bundle:latest-amd64"
-      - "huyezs/fission-bundle:{{ .Tag }}-amd64"
+      - "amnesia1997/fission-bundle:latest-amd64"
+      - "amnesia1997/fission-bundle:{{ .Tag }}-amd64"
     dockerfile: cmd/fission-bundle/Dockerfile
     build_flag_templates:
       - "--platform=linux/amd64"
@@ -129,9 +129,9 @@ docker_manifests:
   # - name_template: huyezs/fetcher:{{ .Tag }}
   #   image_templates:
   #     - huyezs/fetcher:{{ .Tag }}-amd64
-  - name_template: huyezs/fission-bundle:{{ .Tag }}
+  - name_template: amnesia1997/fission-bundle:{{ .Tag }}
     image_templates:
-      - huyezs/fission-bundle:{{ .Tag }}-amd64
+      - amnesia1997/fission-bundle:{{ .Tag }}-amd64
   # - name_template: huyezs/pre-upgrade-checks:{{ .Tag }}
   #   image_templates:
   #     - huyezs/pre-upgrade-checks:{{ .Tag }}-amd64
